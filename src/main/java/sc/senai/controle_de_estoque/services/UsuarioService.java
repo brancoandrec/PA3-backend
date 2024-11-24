@@ -1,7 +1,6 @@
 package sc.senai.controle_de_estoque.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarSenhaUsuarioDTO;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarUsuarioDTO;

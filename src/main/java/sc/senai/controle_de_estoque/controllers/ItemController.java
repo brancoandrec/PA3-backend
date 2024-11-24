@@ -20,6 +20,7 @@ public class ItemController {
         this.itemService = itemService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/buscar")
     public ResponseEntity<?> buscarItem(){
         try {
