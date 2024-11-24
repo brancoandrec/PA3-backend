@@ -1,21 +1,12 @@
-package sc.senai.controle_de_estoque.entities;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+package sc.senai.controle_de_estoque.entities.DTO;
 
 import java.util.Date;
 
-@Entity
-public class Projeto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AlterarProjetoDTO {
     private Long id;
     private String nome;
     private String descricao;
     private Date dataInicio;
-
 
     public Long getId() {
         return id;
@@ -49,3 +40,4 @@ public class Projeto {
         this.dataInicio = dataInicio;
     }
 }
+
