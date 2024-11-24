@@ -1,19 +1,10 @@
-package sc.senai.controle_de_estoque.entities;
+package sc.senai.controle_de_estoque.entities.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CriarItemDTO {
     private Long id;
     private String nome;
-    private String tipo;
     private String descricao;
-
+    private String tipo;
 
     public Long getId() {
         return id;
@@ -31,14 +22,6 @@ public class Item {
         this.nome = nome;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -47,5 +30,11 @@ public class Item {
         this.descricao = descricao;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }

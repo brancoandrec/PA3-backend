@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class Compra {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany
     private List<Item> item;

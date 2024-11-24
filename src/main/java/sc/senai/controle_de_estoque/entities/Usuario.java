@@ -9,18 +9,18 @@ import jakarta.persistence.Id;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;
+    private Long id;
     private String nome;
     private String email;
     private String senha;
     private String cargo;
 
     public Long getCodigo() {
-        return codigo;
+        return id;
     }
 
     public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+        this.id = codigo;
     }
 
     public String getNome() {
