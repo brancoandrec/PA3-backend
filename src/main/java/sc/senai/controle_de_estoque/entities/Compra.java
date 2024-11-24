@@ -10,10 +10,11 @@ public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    private Item item;
+    @OneToMany
+    private List<Item> item;
     @OneToOne
     private Fornecedor fornecedor;
+    @OneToOne
     private Projeto projeto;
     private Long preco;
     private Date dataCompra;
@@ -29,11 +30,11 @@ public class Compra {
         this.id = id;
     }
 
-    public Item getItem() {
+    public List<Item> getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(List<Item> item) {
         this.item = item;
     }
 

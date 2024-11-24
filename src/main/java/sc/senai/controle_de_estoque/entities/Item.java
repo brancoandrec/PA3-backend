@@ -13,9 +13,6 @@ public class Item {
     private String nome;
     private String tipo;
     private String descricao;
-    private int quantidade;
-    private LocalArmazen localArmazen;
-    private Projeto projeto;
 
 
     public Long getId() {
@@ -50,27 +47,5 @@ public class Item {
         this.descricao = descricao;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public LocalArmazen getLocalArmazen() {
-        return localArmazen;
-    }
-
-    public void setLocalArmazen(LocalArmazen localArmazen) {
-        this.localArmazen = localArmazen;
-    }
-
-    public Projeto getProjeto() {
-        return projeto;
-    }
-
-    public void setProjeto(Projeto projeto) {
-        this.projeto = projeto;
-    }
 }
