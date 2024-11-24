@@ -10,6 +10,7 @@ import sc.senai.controle_de_estoque.entities.Item;
 import sc.senai.controle_de_estoque.services.FornecedorService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/fornecedor")
@@ -26,6 +27,22 @@ public class FornecedorController {
             List<Fornecedor> fornecedor = fornecedorService.listarFornecedores();
             return ResponseEntity.ok(fornecedor);
         } catch (Exception e) {
+            return new ResponseEntity<>("Erro de consulta ", HttpStatusCode.valueOf(504));
+        }
+    }
+
+    @GetMapping("/buscarporid/{codigo}")
+    public ResponseEntity<?> buscarFornecedorPorCodigo(@PathVariable Long codigo) {
+        try{
+            Optional<Fornecedor> fornecedor = fornecedorService.buscarFornecedorPorId(codigo);
+            if (fornecedor.isPresent()) {
+                return ResponseEntity.ok(fornecedor.get());
+            }
+            else return ResponseEntity.notFound().build();
+
+        }
+
+        catch (Exception e) {
             return new ResponseEntity<>("Erro de consulta ", HttpStatusCode.valueOf(504));
         }
     }
@@ -54,6 +71,18 @@ public class FornecedorController {
             return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
         }
     }
+
+    @DeleteMapping("/excluir/{codigo}")
+    public ResponseEntity<?> excluirFornecedor(@PathVariable Long codigo){
+        try {
+            fornecedorService.excluirFornecedor(codigo);
+            return ResponseEntity.ok("Excluído com Sucesso");
+        }catch(Exception ex) {
+            return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
+        }
+    }
+
+
 
 
 }
