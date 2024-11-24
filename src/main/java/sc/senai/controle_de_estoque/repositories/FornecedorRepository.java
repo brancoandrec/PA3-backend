@@ -1,4 +1,7 @@
 package sc.senai.controle_de_estoque.repositories;
 
-public interface FornecedorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import sc.senai.controle_de_estoque.entities.Fornecedor;
+
+public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
 }
