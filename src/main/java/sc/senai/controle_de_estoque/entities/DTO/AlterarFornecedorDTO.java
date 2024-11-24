@@ -1,11 +1,8 @@
 package sc.senai.controle_de_estoque.entities.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-public class AlterarForncedorDTO {
+
+public class AlterarFornecedorDTO {
 
         private Long id;
         private String nome;
@@ -45,4 +42,4 @@ public class AlterarForncedorDTO {
         }
     }
 
-}
+
