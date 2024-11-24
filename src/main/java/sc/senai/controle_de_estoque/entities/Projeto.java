@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Projeto {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String descricao;
