@@ -44,7 +44,7 @@ public class ProjetoController {
     @PutMapping("/alterar")
     public ResponseEntity<?> alterarProjeto(@RequestBody AlterarProjetoDTO alterarProjetoDTO) {
         try{
-            alterarProjetoDTO = projetoService.atualizarProjeto(alterarProjetoDTO);
+            projetoService.atualizarProjeto(alterarProjetoDTO);
             return ResponseEntity.ok(alterarProjetoDTO);
         } catch (Exception ex) {
             return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
