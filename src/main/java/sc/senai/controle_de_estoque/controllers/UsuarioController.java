@@ -1,5 +1,6 @@
 package sc.senai.controle_de_estoque.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,8 @@ public class UsuarioController {
             Usuario usuarioCriado = usuarioService.criarUsuario(usuario);
             return ResponseEntity.ok(usuarioCriado);
         } catch (Exception ex){
-            return new ResponseEntity("Erro", HttpStatusCode.valueOf(504));
+//            return new ResponseEntity("Erro", HttpStatusCode.valueOf(504));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred: " + ex.getMessage());
         }
     }
 
