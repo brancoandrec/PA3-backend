@@ -4,10 +4,12 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarProjetoDTO;
+import sc.senai.controle_de_estoque.entities.LocalArmazen;
 import sc.senai.controle_de_estoque.entities.Projeto;
 import sc.senai.controle_de_estoque.services.ProjetoService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/projeto")
@@ -70,5 +72,23 @@ public class ProjetoController {
             return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
         }
     }
+
+    @GetMapping("/buscarporid/{codigo}")
+    public ResponseEntity<?> buscarProjetoPorId(@PathVariable Long codigo) {
+        try{
+            Optional<Projeto> projeto = projetoService.buscarProjetoPorId(codigo);
+            if (projeto.isPresent()) {
+                return ResponseEntity.ok(projeto.get());
+            }
+            else return ResponseEntity.notFound().build();
+
+        }
+
+        catch (Exception e) {
+            return new ResponseEntity<>("Erro de consulta ", HttpStatusCode.valueOf(504));
+        }
+
+    }
+
 
 }
