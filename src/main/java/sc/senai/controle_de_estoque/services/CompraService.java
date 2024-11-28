@@ -61,6 +61,9 @@ public class CompraService {
     }
 
     public List<Compra> buscarComprasPorNomeFornecedor(String nomeFornecedor) {
-        return compraRepository.findByFornecedorNome(nomeFornecedor);
+        return compraRepository.findByFornecedorNomeContainingIgnoreCase(nomeFornecedor);
+    }
+    public List<Compra> buscarPorNomeProjeto(String nomeProjeto){
+        return compraRepository.findByProjetoNomeContainingIgnoreCase(nomeProjeto);
     }
 }
