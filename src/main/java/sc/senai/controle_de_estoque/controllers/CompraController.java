@@ -58,4 +58,14 @@ public class CompraController {
         }
 
     }
+
+    @GetMapping("/fornecedor")
+    public ResponseEntity<?> buscarPorFornecedor(@RequestParam String fornecedor) {
+        try{
+            List<Compra> compras = compraService.buscarComprasPorNomeFornecedor(fornecedor);
+            return ResponseEntity.ok(compras);
+        } catch (Exception ex) {
+            return new ResponseEntity<>("Erro ao buscar compra", HttpStatusCode.valueOf(504));
+        }
+    }
 }

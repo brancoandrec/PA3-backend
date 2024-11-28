@@ -20,7 +20,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorizeConfig -> {
                             authorizeConfig.requestMatchers("/usuario/**").permitAll();
-                            authorizeConfig.requestMatchers("/usuadio/add").permitAll();
+                            authorizeConfig.requestMatchers("/usuario/add").permitAll();
 //                            authorizeConfig.requestMatchers("/usuario/buscar").hasRole("ADMIN");
 //                            authorizeConfig.requestMatchers("/usuario/alterar").hasRole("ADMIN");
 //                            authorizeConfig.requestMatchers("/usuario/alterar/senha").permitAll();

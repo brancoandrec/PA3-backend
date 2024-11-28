@@ -59,4 +59,8 @@ public class CompraService {
         }
         throw new Exception("Compra não existe");
     }
+
+    public List<Compra> buscarComprasPorNomeFornecedor(String nomeFornecedor) {
+        return compraRepository.findByFornecedorNome(nomeFornecedor);
+    }
 }

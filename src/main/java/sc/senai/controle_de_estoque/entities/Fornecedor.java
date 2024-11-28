@@ -1,9 +1,8 @@
 package sc.senai.controle_de_estoque.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Fornecedor {
@@ -13,6 +12,7 @@ public class Fornecedor {
     private String nome;
     private String contato;
     private String endereco;
+
 
     public Long getId() {
         return id;
@@ -45,4 +45,6 @@ public class Fornecedor {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
+
 }

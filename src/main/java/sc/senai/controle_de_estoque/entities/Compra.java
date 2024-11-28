@@ -12,7 +12,7 @@ public class Compra {
     private Long id;
     @OneToMany
     private List<Item> item;
-    @OneToOne
+    @ManyToOne
     private Fornecedor fornecedor;
     @OneToOne
     private Projeto projeto;
