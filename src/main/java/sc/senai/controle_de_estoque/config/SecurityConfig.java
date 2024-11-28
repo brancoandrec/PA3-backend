@@ -27,16 +27,16 @@ public class SecurityConfig {
 //                            authorizeConfig.requestMatchers("/usuario/excluir/**").hasRole("ADMIN");
 
                             authorizeConfig.requestMatchers("/projeto/buscar").permitAll();
-                            authorizeConfig.requestMatchers("/projeto/add").hasRole("ADMIN");
-                            authorizeConfig.requestMatchers("/projeto/alterar").hasRole("ADMIN");
-                            authorizeConfig.requestMatchers("/projeto/excluir").hasRole("ADMIN");
-                            authorizeConfig.requestMatchers("/projeto/alterardescricao/**").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/projeto/add").permitAll();
+                            authorizeConfig.requestMatchers("/projeto/alterar").permitAll();
+                            authorizeConfig.requestMatchers("/projeto/excluir").permitAll();
+                            authorizeConfig.requestMatchers("/projeto/alterardescricao/**").permitAll();
 
                             authorizeConfig.requestMatchers("/item/buscar").permitAll();
-                            authorizeConfig.requestMatchers("/item/add").hasRole("ADMIN");
-                            authorizeConfig.requestMatchers("/item/alterar/**").hasRole("ADMIN");
-                            authorizeConfig.requestMatchers("/item/excluir").hasRole("ADMIN");
-                            authorizeConfig.requestMatchers("/item/status/**").hasRole("ADMIN");
+                            authorizeConfig.requestMatchers("/item/add").permitAll();
+                            authorizeConfig.requestMatchers("/item/alterar/**").permitAll();
+                            authorizeConfig.requestMatchers("/item/excluir").permitAll();
+                            authorizeConfig.requestMatchers("/item/status/**").permitAll();
 
                             authorizeConfig.requestMatchers("/compra").permitAll();
                             authorizeConfig.requestMatchers("/conjuntoitens").permitAll();
