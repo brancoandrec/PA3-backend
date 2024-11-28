@@ -41,7 +41,8 @@ public class SecurityConfig {
                             authorizeConfig.requestMatchers("/compra").permitAll();
                             authorizeConfig.requestMatchers("/conjuntoitens").permitAll();
                             authorizeConfig.requestMatchers("/fornecedor").permitAll();
-                            authorizeConfig.requestMatchers("/localarmazen").permitAll();
+                            authorizeConfig.requestMatchers("/localarmazen/**").permitAll();
+                            authorizeConfig.requestMatchers("/**").permitAll();
 
 
                             authorizeConfig.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll();
