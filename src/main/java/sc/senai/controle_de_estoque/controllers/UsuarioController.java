@@ -31,6 +31,10 @@ public class UsuarioController {
         }
     }
 
+
+
+
+
     @PostMapping("/add")
     public ResponseEntity<?> criarUsuario(@RequestBody Usuario usuario){
         try {

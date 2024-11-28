@@ -27,20 +27,22 @@ public class UserDetailsServiceCustom implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Usuario> usuario = usuarioService.getUsuarioAuth(username);
-        if(!usuario.isPresent())
-            new UsernameNotFoundException("Usuario nao encontrado");
+        if (!usuario.isPresent())
+            throw new UsernameNotFoundException("Usuario nao encontrado");
 
-
-        String role = usuario.get().getCargo();
-        if(!role.startsWith("ROLE_"))
-            role = "ROLE_"+role;
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role);
-        Set<GrantedAuthority> authorities = new HashSet();
-        authorities.add(authority);
-
-        User user = new User(usuario.get().getEmail(), usuario.get().getSenha(), authorities);
-        return user;
-
+        return new UserDetailsCustom(usuario);
 
     }
+//        String role = usuario.get().getCargo();
+//        if(!role.startsWith("ROLE_"))
+//            role = "ROLE_"+role;
+//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role);
+//        Set<GrantedAuthority> authorities = new HashSet();
+//        authorities.add(authority);
+//
+//        User user = new User(usuario.get().getEmail(), usuario.get().getSenha(), authorities);
+//        return user;
+//
+//
+//    }
 }

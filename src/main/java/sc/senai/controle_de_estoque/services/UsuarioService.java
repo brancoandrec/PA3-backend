@@ -58,8 +58,8 @@ public class UsuarioService {
 
     }
 
-    public Optional<Usuario> getUsuarioAuth(String email){
-        return usuarioRepository.findByEmail(email);
+    public Optional<Usuario> getUsuarioAuth(String username){
+        return usuarioRepository.findByEmail(username);
     }
 
 
@@ -70,6 +70,7 @@ public class UsuarioService {
         usuario.get().setSenha(passwd);
         return usuarioRepository.save(usuario.get());
     }
+
 
 
 }

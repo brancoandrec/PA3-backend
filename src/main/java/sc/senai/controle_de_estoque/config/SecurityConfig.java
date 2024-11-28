@@ -2,7 +2,9 @@ package sc.senai.controle_de_estoque.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,13 +16,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    protected SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    protected SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationManager authenticationManager) throws Exception {
         return httpSecurity
                 .csrf(c -> c.disable())
                 .authorizeHttpRequests(
                         authorizeConfig -> {
                             authorizeConfig.requestMatchers("/usuario/**").permitAll();
-                            authorizeConfig.requestMatchers("/usuadio/add").permitAll();
+                            authorizeConfig.requestMatchers("/usuario/add").permitAll();
 //                            authorizeConfig.requestMatchers("/usuario/buscar").hasRole("ADMIN");
 //                            authorizeConfig.requestMatchers("/usuario/alterar").hasRole("ADMIN");
 //                            authorizeConfig.requestMatchers("/usuario/alterar/senha").permitAll();
@@ -43,19 +45,27 @@ public class SecurityConfig {
                             authorizeConfig.requestMatchers("/fornecedor").permitAll();
                             authorizeConfig.requestMatchers("/localarmazen").permitAll();
 
+                            authorizeConfig.requestMatchers("/auth").permitAll();
+
 
                             authorizeConfig.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll();
 
                             authorizeConfig.anyRequest().authenticated();
 
                         }
-                ).httpBasic(Customizer.withDefaults())
+                ).addFilter(new JWTAuthenticationFilter(authenticationManager))
+                .addFilter(new JWTValidateFilter(authenticationManager))
                 .build();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
 }
