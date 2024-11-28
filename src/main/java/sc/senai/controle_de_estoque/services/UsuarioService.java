@@ -1,7 +1,5 @@
 package sc.senai.controle_de_estoque.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarSenhaUsuarioDTO;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarUsuarioDTO;
@@ -15,15 +13,13 @@ import java.util.Optional;
 public class UsuarioService {
 
     private UsuarioRepository usuarioRepository;
-    private PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder ) {
+    public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     public Usuario criarUsuario(Usuario usuario) {
-        String passwd = passwordEncoder.encode(usuario.getSenha());
+        String passwd =usuario.getSenha();
         usuario.setSenha(passwd);
         usuarioRepository.save(usuario);
         return usuario;
@@ -66,7 +62,7 @@ public class UsuarioService {
 
     public Usuario atualizarSenhaUsuario(AlterarSenhaUsuarioDTO alterarSenhaUsuarioDTO) {
         Optional<Usuario> usuario = usuarioRepository.findById(alterarSenhaUsuarioDTO.getId());
-        String passwd = passwordEncoder.encode(alterarSenhaUsuarioDTO.getSenha());
+        String passwd = alterarSenhaUsuarioDTO.getSenha();
         usuario.get().setSenha(passwd);
         return usuarioRepository.save(usuario.get());
     }
