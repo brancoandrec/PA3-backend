@@ -10,4 +10,5 @@ import java.util.List;
 public interface ConjuntoItensRepository extends JpaRepository <ConjuntoItens, Long> {
 
     List<ConjuntoItens> findByProjetoNomeContainingIgnoreCase(String nome);
+    List<ConjuntoItens> findByProjetoId(Long id);
 }

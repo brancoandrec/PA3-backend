@@ -96,6 +96,16 @@ public class ConjuntoItensController {
         }
     }
 
+    @GetMapping("/projeto/{id}")
+    public ResponseEntity<?> buscarPorIdProjeto(@PathVariable Long id){
+        try{
+            List<ConjuntoItens> conjuntoItens = conjuntoItensService.findByIdProjeto(id);
+            return ResponseEntity.ok(conjuntoItens);
+        } catch (Exception ex) {
+            return new ResponseEntity<>("Erro ao buscar conjunto de itens", HttpStatusCode.valueOf(504));
+        }
+    }
+
 
 
 

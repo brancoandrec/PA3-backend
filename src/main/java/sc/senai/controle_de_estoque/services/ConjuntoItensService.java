@@ -58,5 +58,8 @@ public class ConjuntoItensService {
     public List<ConjuntoItens> buscarPorNomeProjeto(String nomeProjeto){
         return conjuntoItensRepository.findByProjetoNomeContainingIgnoreCase(nomeProjeto);
     }
+    public List<ConjuntoItens> findByIdProjeto(Long id){
+        return conjuntoItensRepository.findByProjetoId(id);
+    }
 
 }
