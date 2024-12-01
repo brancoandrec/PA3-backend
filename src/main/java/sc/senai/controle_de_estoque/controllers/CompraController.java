@@ -21,7 +21,7 @@ public class CompraController {
     public ResponseEntity<?> criarItem(@RequestBody Compra compra) {
         try{
             Compra compr = compraService.criarCompra(compra);
-            return ResponseEntity.ok().body(compr);
+            return ResponseEntity.ok(compr);
 
         } catch (Exception ex) {
             return new ResponseEntity<>("Erro ao criar compra", HttpStatusCode.valueOf(504));
