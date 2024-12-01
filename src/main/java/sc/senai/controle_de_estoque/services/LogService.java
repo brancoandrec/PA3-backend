@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.Log;
 import sc.senai.controle_de_estoque.repositories.LogRepository;
 
+import java.util.List;
+
 @Service
 public class LogService {
     private final LogRepository logRepository;
@@ -14,6 +16,10 @@ public class LogService {
     public void salvarLog(String httpMetodo, String classe, String nomeMetodo) {
         Log log = new Log(httpMetodo, classe, nomeMetodo);
         logRepository.save(log);
+    }
+
+    public List<Log> listarLogs() {
+        return logRepository.findAll();
     }
 
 }
