@@ -44,9 +44,9 @@ public class ConjuntoItensService {
 
         if(Optional.ofNullable(conjuntoItens.get()).isPresent()) {
             conjuntoItens.get().setItem(conjuntoItensDTO.getItem());
-            conjuntoItens.get().setQuantidade(conjuntoItens.get().getQuantidade());
-            conjuntoItens.get().setProjeto(conjuntoItens.get().getProjeto());
-            conjuntoItens.get().setLocalArmazen(conjuntoItens.get().getLocalArmazen());
+            conjuntoItens.get().setQuantidade(conjuntoItensDTO.getQuantidade());
+            conjuntoItens.get().setProjeto(conjuntoItensDTO.getProjeto());
+            conjuntoItens.get().setLocalArmazen(conjuntoItensDTO.getLocalArmazen());
 
             conjuntoItensRepository.save(conjuntoItens.get());
             return conjuntoItensDTO;

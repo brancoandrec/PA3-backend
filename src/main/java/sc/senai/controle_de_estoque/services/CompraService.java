@@ -66,4 +66,8 @@ public class CompraService {
     public List<Compra> buscarPorNomeProjeto(String nomeProjeto){
         return compraRepository.findByProjetoNomeContainingIgnoreCase(nomeProjeto);
     }
+
+    public List<Compra> findByProjetoId(Long idProjeto){
+        return compraRepository.findByProjetoId(idProjeto);
+    }
 }

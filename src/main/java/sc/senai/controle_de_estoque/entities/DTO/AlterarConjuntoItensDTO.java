@@ -6,10 +6,11 @@ import sc.senai.controle_de_estoque.entities.Projeto;
 
 public class AlterarConjuntoItensDTO {
     private Long id;
-    private String descricao;
+    private int quantidade;
+    private Item item;
     private LocalArmazen localArmazen;
     private Projeto projeto;
-    private Item item;
+
 
     public Long getId() {
         return id;
@@ -19,12 +20,12 @@ public class AlterarConjuntoItensDTO {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public LocalArmazen getLocalArmazen() {

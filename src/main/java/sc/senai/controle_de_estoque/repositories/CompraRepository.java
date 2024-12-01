@@ -11,6 +11,8 @@ public interface CompraRepository extends JpaRepository<Compra, Long> {
 
     List<Compra> findByProjetoNomeContainingIgnoreCase(String nome);
 
+    List<Compra> findByProjetoId(Long id);
+
     List<Compra> findByFornecedorNomeContainingIgnoreCase(String nome);
 
 }

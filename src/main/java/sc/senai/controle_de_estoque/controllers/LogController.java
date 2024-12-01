@@ -19,15 +19,15 @@ public class LogController {
     public LogController(LogService logService) {
         this.logService = logService;
     }
+
+
     @GetMapping("/buscar")
-
-
     public ResponseEntity<?> buscarLog() {
         try{
             List<Log> l = logService.listarLogs();
             return ResponseEntity.ok(l);
         } catch (Exception ex) {
-            return new ResponseEntity<>("Erro ao buscar compra", HttpStatusCode.valueOf(504));
+            return new ResponseEntity<>("Erro ao buscar logs", HttpStatusCode.valueOf(504));
         }
     }
 

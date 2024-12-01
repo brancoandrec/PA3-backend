@@ -78,4 +78,14 @@ public class CompraController {
             return new ResponseEntity<>("Erro ao buscar compra", HttpStatusCode.valueOf(504));
         }
     }
+
+    @GetMapping("/projeto/{id}")
+    public ResponseEntity<?> buscarPorProjetoId(@PathVariable Long id){
+        try{
+            List<Compra> compras = compraService.findByProjetoId(id);
+            return ResponseEntity.ok(compras);
+        } catch (Exception ex) {
+            return new ResponseEntity<>("Erro ao buscar compra", HttpStatusCode.valueOf(504));
+        }
+    }
 }

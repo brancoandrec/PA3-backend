@@ -9,9 +9,9 @@ public class ConjuntoItens {
     private Long id;
     private int quantidade;
     @ManyToOne
-    private LocalArmazen localArmazen;
-    @ManyToOne
     private Item item;
+    @ManyToOne
+    private LocalArmazen localArmazen;
     @ManyToOne
     private Projeto projeto;
 
