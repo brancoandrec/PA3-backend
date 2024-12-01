@@ -45,4 +45,7 @@ public class LogLoggingAspect {
         String nomeMetodo = joinPoint.getSignature().getName();
         logService.salvarLog(httpMetodo, classe, nomeMetodo);
     }
+
+
+
 }
