@@ -10,11 +10,11 @@ public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @ManyToMany
     private List<Item> item;
     @ManyToOne
     private Fornecedor fornecedor;
-    @OneToOne
+    @ManyToOne
     private Projeto projeto;
     private Long preco;
     private Date dataCompra;
