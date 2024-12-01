@@ -3,8 +3,11 @@ package sc.senai.controle_de_estoque.controllers;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sc.senai.controle_de_estoque.entities.Compra;
+import sc.senai.controle_de_estoque.entities.ConjuntoItens;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarLocalArmazenDTO;
 import sc.senai.controle_de_estoque.entities.LocalArmazen;
+import sc.senai.controle_de_estoque.services.ConjuntoItensService;
 import sc.senai.controle_de_estoque.services.LocalArmazenService;
 
 import java.util.List;
@@ -14,9 +17,11 @@ import java.util.Optional;
 @RequestMapping("/localarmazen")
 public class LocalArmazenController {
 
+    private final ConjuntoItensService conjuntoItensService;
     private LocalArmazenService localArmazenService;
-    public LocalArmazenController(LocalArmazenService localArmazenService) {
+    public LocalArmazenController(LocalArmazenService localArmazenService, ConjuntoItensService conjuntoItensService) {
         this.localArmazenService = localArmazenService;
+        this.conjuntoItensService = conjuntoItensService;
     }
 
     //codigo copiado de fornecedor controller
@@ -54,7 +59,7 @@ public class LocalArmazenController {
     public ResponseEntity<?> criarLocalArmazen(@RequestBody LocalArmazen localArmazen){
         try{
             LocalArmazen localArmazencriado = localArmazenService.criarLocalArmazen(localArmazen);
-            return ResponseEntity.ok(localArmazen);
+            return ResponseEntity.ok(localArmazencriado);
 
         } catch (Exception ex) {
             return new ResponseEntity<>("Erro ao criar item ", HttpStatusCode.valueOf(504));
@@ -85,6 +90,7 @@ public class LocalArmazenController {
             return new ResponseEntity("Erro de Consulta", HttpStatusCode.valueOf(504));
         }
     }
+
 
 
 

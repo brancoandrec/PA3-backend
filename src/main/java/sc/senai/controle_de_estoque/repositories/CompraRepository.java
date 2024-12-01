@@ -8,8 +8,9 @@ import java.util.List;
 
 @Repository
 public interface CompraRepository extends JpaRepository<Compra, Long> {
-    List<Compra> findByFornecedorNomeContainingIgnoreCase(String nome);
 
-    List<Compra> findByProjetoNomeContainingIgnoreCase(String nomeProjeto);
+    List<Compra> findByProjetoNomeContainingIgnoreCase(String nome);
+
+    List<Compra> findByFornecedorNomeContainingIgnoreCase(String nome);
 
 }

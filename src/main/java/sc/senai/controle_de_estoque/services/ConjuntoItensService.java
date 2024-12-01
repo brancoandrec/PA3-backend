@@ -1,6 +1,7 @@
 package sc.senai.controle_de_estoque.services;
 
 import org.springframework.stereotype.Service;
+import sc.senai.controle_de_estoque.entities.Compra;
 import sc.senai.controle_de_estoque.entities.ConjuntoItens;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarConjuntoItensDTO;
 import sc.senai.controle_de_estoque.repositories.ConjuntoItensRepository;
@@ -52,6 +53,10 @@ public class ConjuntoItensService {
         }
         throw new Exception("Conjunto não encontrado");
 
+    }
+
+    public List<ConjuntoItens> buscarPorNomeProjeto(String nomeProjeto){
+        return conjuntoItensRepository.findByProjetoNomeContainingIgnoreCase(nomeProjeto);
     }
 
 }
