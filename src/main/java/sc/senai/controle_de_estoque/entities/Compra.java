@@ -14,7 +14,7 @@ public class Compra {
     private List<Item> item;
     @ManyToOne
     private Fornecedor fornecedor;
-    @OneToOne
+    @ManyToOne
     private Projeto projeto;
     private Long preco;
     private Date dataCompra;
