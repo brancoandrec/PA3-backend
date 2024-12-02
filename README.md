@@ -19,14 +19,6 @@ Update - PATCH - Compra
 
 Delete - DELETE - Compra
 
-Create - POST - Usuários
-
-Read - GET - Usuários
-
-Update - PATCH - Usuários
-
-Delete - DELETE - Usuários
-
 Create - POST - Fornecedores
 
 Read - GET - Fornecedores
