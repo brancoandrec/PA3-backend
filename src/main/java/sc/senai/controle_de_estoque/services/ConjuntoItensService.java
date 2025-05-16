@@ -1,5 +1,6 @@
 package sc.senai.controle_de_estoque.services;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.Compra;
 import sc.senai.controle_de_estoque.entities.ConjuntoItens;
@@ -27,7 +28,7 @@ public class ConjuntoItensService {
     }
 
     public List<ConjuntoItens> listarConjuntoItens() {
-        return conjuntoItensRepository.findAll();
+        return conjuntoItensRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Optional<ConjuntoItens> buscarPorId(Long id) {

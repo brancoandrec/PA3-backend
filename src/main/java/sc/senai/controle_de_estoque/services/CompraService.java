@@ -1,5 +1,6 @@
 package sc.senai.controle_de_estoque.services;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.Compra;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarCompraDTO;
@@ -30,7 +31,7 @@ public class CompraService {
     }
 
     public List<Compra> buscarTodas() {
-        return compraRepository.findAll();
+        return compraRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Optional<Compra> buscarPorId(Long id) {

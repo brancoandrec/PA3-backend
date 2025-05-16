@@ -1,6 +1,7 @@
 package sc.senai.controle_de_estoque.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarSenhaUsuarioDTO;
@@ -45,7 +46,7 @@ public class UsuarioService {
     }
 
     public List<Usuario> listarUsuarios() {
-        return usuarioRepository.findAll();
+        return usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Optional<Usuario> buscarUsuarioPorId(Long id) {
