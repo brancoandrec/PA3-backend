@@ -4,7 +4,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.Compra;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarCompraDTO;
+import sc.senai.controle_de_estoque.entities.DTO.CriarCompraDTO;
+import sc.senai.controle_de_estoque.entities.Fornecedor;
+import sc.senai.controle_de_estoque.entities.Item;
+import sc.senai.controle_de_estoque.entities.Projeto;
 import sc.senai.controle_de_estoque.repositories.CompraRepository;
+import sc.senai.controle_de_estoque.repositories.FornecedorRepository;
+import sc.senai.controle_de_estoque.repositories.ItemRepository;
+import sc.senai.controle_de_estoque.repositories.ProjetoRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,20 +19,34 @@ import java.util.Optional;
 @Service
 public class CompraService {
 
+    private final FornecedorRepository fornecedorRepository;
+    private final ItemRepository itemRepository;
+    private final ProjetoRepository projetoRepository;
     private CompraRepository compraRepository;
-    public CompraService(CompraRepository compraRepository) {
+    public CompraService(CompraRepository compraRepository, FornecedorRepository fornecedorRepository, ItemRepository itemRepository, ProjetoRepository projetoRepository) {
         this.compraRepository = compraRepository;
+        this.fornecedorRepository = fornecedorRepository;
+        this.itemRepository = itemRepository;
+        this.projetoRepository = projetoRepository;
     }
 
-    public Compra criarCompra(Compra compra) {
+    public Compra criarCompra(CriarCompraDTO compra) {
         Compra compr = new Compra();
-        compr.setDataCompra(compra.getDataCompra());
-        compr.setItem(compra.getItem());
-        compr.setDataInvoice(compra.getDataInvoice());
-        compr.setFornecedor(compra.getFornecedor());
+        Fornecedor fornecedor = fornecedorRepository.findByNome(compra.getFornecedorNome())
+                .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado: " + compra.getFornecedorNome()));
+
+        Projeto projeto = projetoRepository.findById(compra.getProjetoId())
+                .orElseThrow(() -> new RuntimeException("Projeto não encontrado com ID: " + compra.getProjetoId()));
+
+        List<Item> itens = itemRepository.findAllById(compra.getItemIds());
+
+        compr.setFornecedor(fornecedor);
+        compr.setItem(itens);
+        compr.setProjeto(projeto);
         compr.setPreco(compra.getPreco());
+        compr.setDataCompra(compra.getDataCompra());
         compr.setDataRecebimento(compra.getDataRecebimento());
-        compr.setProjeto(compra.getProjeto());
+        compr.setDataInvoice(compra.getDataInvoice());
 
         return compraRepository.save(compr);
     }

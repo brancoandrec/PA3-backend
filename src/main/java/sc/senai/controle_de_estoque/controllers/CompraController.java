@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sc.senai.controle_de_estoque.entities.Compra;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarCompraDTO;
+import sc.senai.controle_de_estoque.entities.DTO.CriarCompraDTO;
 import sc.senai.controle_de_estoque.services.CompraService;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class CompraController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> criarItem(@RequestBody Compra compra) {
+    public ResponseEntity<?> criarItem(@RequestBody CriarCompraDTO compra) {
         try{
             Compra compr = compraService.criarCompra(compra);
             return ResponseEntity.ok(compr);
