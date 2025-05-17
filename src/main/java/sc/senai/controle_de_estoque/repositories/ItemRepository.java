@@ -6,4 +6,6 @@ import sc.senai.controle_de_estoque.entities.Item;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
+
+    boolean existsByNome(String nome);
 }

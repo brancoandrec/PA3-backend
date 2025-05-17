@@ -17,12 +17,16 @@ public class ProjetoService {
         this.projetoRepository = projetoRepository;
     }
 
-    public Projeto criarProjeto(Projeto projeto){
-        Projeto proj = new Projeto();
-        proj.setNome(projeto.getNome());
-        proj.setDescricao(projeto.getDescricao());
-        proj.setDataInicio(projeto.getDataInicio());
-        return projetoRepository.save(proj);
+    public Projeto criarProjeto(Projeto projeto) throws Exception{
+        if (projetoRepository.existsByNome(projeto.getNome())) {
+            throw new Exception("Já existe um projeto com esse nome.");
+        } else {
+            Projeto proj = new Projeto();
+            proj.setNome(projeto.getNome());
+            proj.setDescricao(projeto.getDescricao());
+            proj.setDataInicio(projeto.getDataInicio());
+            return projetoRepository.save(proj);
+        }
     }
 
     public List<Projeto> listarProjetos() {

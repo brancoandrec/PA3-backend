@@ -18,12 +18,15 @@ public class ItemService {
     }
 
     public Item criarItem(CriarItemDTO criarItemDTO) throws Exception {
-        Item item = new Item();
-        item.setDescricao(criarItemDTO.getDescricao());
-        item.setNome(criarItemDTO.getNome());
-        item.setTipo(criarItemDTO.getTipo());
-
-        return itemRepository.save(item);
+        if (itemRepository.existsByNome(criarItemDTO.getNome())) {
+            throw new Exception("Já existe um item com esse nome.");
+        } else {
+            Item item = new Item();
+            item.setDescricao(criarItemDTO.getDescricao());
+            item.setNome(criarItemDTO.getNome());
+            item.setTipo(criarItemDTO.getTipo());
+            return itemRepository.save(item);
+        }
     }
 
     public List<Item> listarItems() {
