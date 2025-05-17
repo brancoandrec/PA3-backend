@@ -1,5 +1,6 @@
 package sc.senai.controle_de_estoque.services;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.DTO.CriarItemDTO;
 import sc.senai.controle_de_estoque.entities.Item;
@@ -26,7 +27,7 @@ public class ItemService {
     }
 
     public List<Item> listarItems() {
-        return itemRepository.findAll();
+        return itemRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Item atualizarItem(Long id, Item item) throws Exception {

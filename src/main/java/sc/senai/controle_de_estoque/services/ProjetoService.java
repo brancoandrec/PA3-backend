@@ -1,5 +1,6 @@
 package sc.senai.controle_de_estoque.services;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarProjetoDTO;
 import sc.senai.controle_de_estoque.entities.Projeto;
@@ -25,7 +26,7 @@ public class ProjetoService {
     }
 
     public List<Projeto> listarProjetos() {
-        return projetoRepository.findAll();
+        return projetoRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public AlterarProjetoDTO atualizarProjeto(AlterarProjetoDTO projetoDTO) throws Exception{

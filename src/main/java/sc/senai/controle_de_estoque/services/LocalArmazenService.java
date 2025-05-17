@@ -1,6 +1,7 @@
 package sc.senai.controle_de_estoque.services;
 
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarLocalArmazenDTO;
 
@@ -42,7 +43,7 @@ public class LocalArmazenService {
     }
 
     public List<LocalArmazen> listarLocalArmazen() {
-        return localArmazenRepository.findAll();
+        return localArmazenRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Optional<LocalArmazen> buscarLocalArmazenPorId(Long id) {

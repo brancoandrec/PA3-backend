@@ -1,5 +1,6 @@
 package sc.senai.controle_de_estoque.services;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sc.senai.controle_de_estoque.entities.DTO.AlterarFornecedorDTO;
 import sc.senai.controle_de_estoque.entities.Fornecedor;
@@ -53,7 +54,7 @@ public AlterarFornecedorDTO alterarForncedorPorId(AlterarFornecedorDTO alterarFo
 
 
     public List<Fornecedor> listarFornecedores() {
-        return fornecedorRepository.findAll();
+        return fornecedorRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Optional<Fornecedor> buscarFornecedorPorId(Long id) {
