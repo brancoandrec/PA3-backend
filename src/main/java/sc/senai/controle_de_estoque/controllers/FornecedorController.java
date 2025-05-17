@@ -50,11 +50,12 @@ public class FornecedorController {
     @PostMapping("/add")
     public ResponseEntity<?> criarFornecedor(@RequestBody Fornecedor fornecedor){
         try{
+
             Fornecedor fornecedorCriado = fornecedorService.criarFornecedor(fornecedor);
             return ResponseEntity.ok(fornecedorCriado);
 
         } catch (Exception ex) {
-            return new ResponseEntity<>("Erro ao criar item ", HttpStatusCode.valueOf(504));
+            return new ResponseEntity<>("Erro ao criar fornecedor ", HttpStatusCode.valueOf(504));
         }
     }
 

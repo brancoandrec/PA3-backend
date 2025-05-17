@@ -18,13 +18,17 @@ public class FornecedorService {
 
      // crud de forncedor
 
-    public Fornecedor criarFornecedor(Fornecedor fornecedor) {
-        Fornecedor f = new Fornecedor();
-        f.setNome(fornecedor.getNome());
-        f.setContato(fornecedor.getContato());
-        f.setEndereco(fornecedor.getEndereco());
-        return fornecedorRepository.save(f);
+    public Fornecedor criarFornecedor(Fornecedor fornecedor) throws Exception {
+        if (fornecedorRepository.existsByNome(fornecedor.getNome())) {
+            throw new Exception("Já existe um fornecedor com esse nome.");
+        } else {
 
+            Fornecedor f = new Fornecedor();
+            f.setNome(fornecedor.getNome());
+            f.setContato(fornecedor.getContato());
+            f.setEndereco(fornecedor.getEndereco());
+            return fornecedorRepository.save(f);
+        }
     }
 //verificar se esta funcionando, adaptado para usar id e o dto que é parecido com a classe fornecedor
 public AlterarFornecedorDTO alterarForncedorPorId(AlterarFornecedorDTO alterarForncedorDTO , Long id) throws Exception{

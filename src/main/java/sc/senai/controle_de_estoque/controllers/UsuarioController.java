@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuario") // http://localhost:8080/usuario
 public class UsuarioController {
     private UsuarioService usuarioService;
 

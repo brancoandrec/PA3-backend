@@ -6,4 +6,7 @@ import sc.senai.controle_de_estoque.entities.Fornecedor;
 
 @Repository
 public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
+
+    boolean existsByNome(String nome);
+
 }
