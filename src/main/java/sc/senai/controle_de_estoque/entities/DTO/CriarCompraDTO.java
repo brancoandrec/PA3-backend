@@ -4,20 +4,29 @@ import java.util.Date;
 import java.util.List;
 
 public class CriarCompraDTO {
-        private List<Long> itemIds;
+        private List<String> itemNomes;
         private String fornecedorNome;
-        private Long projetoId;
+        private String projetoNome;
         private Long preco;
         private Date dataCompra;
         private Date dataRecebimento;
         private Date dataInvoice;
 
-    public List<Long> getItemIds() {
-        return itemIds;
+
+    public String getProjetoNome() {
+        return projetoNome;
     }
 
-    public void setItemIds(List<Long> itemIds) {
-        this.itemIds = itemIds;
+    public void setProjetoNome(String projetoNome) {
+        this.projetoNome = projetoNome;
+    }
+
+    public List<String> getItemNomes() {
+        return itemNomes;
+    }
+
+    public void setItemNomes(List<String> itemNomes) {
+        this.itemNomes = itemNomes;
     }
 
     public String getFornecedorNome() {
@@ -26,14 +35,6 @@ public class CriarCompraDTO {
 
     public void setFornecedorNome(String fornecedorNome) {
         this.fornecedorNome = fornecedorNome;
-    }
-
-    public Long getProjetoId() {
-        return projetoId;
-    }
-
-    public void setProjetoId(Long projetoId) {
-        this.projetoId = projetoId;
     }
 
     public Long getPreco() {

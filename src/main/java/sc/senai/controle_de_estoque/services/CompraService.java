@@ -35,10 +35,11 @@ public class CompraService {
         Fornecedor fornecedor = fornecedorRepository.findByNome(compra.getFornecedorNome())
                 .orElseThrow(() -> new RuntimeException("Fornecedor não encontrado: " + compra.getFornecedorNome()));
 
-        Projeto projeto = projetoRepository.findById(compra.getProjetoId())
-                .orElseThrow(() -> new RuntimeException("Projeto não encontrado com ID: " + compra.getProjetoId()));
+        Projeto projeto = projetoRepository.findByNome(compra.getProjetoNome())
+                .orElseThrow(() -> new RuntimeException("Projeto não encontrado com ID: " + compra.getProjetoNome()));
 
-        List<Item> itens = itemRepository.findAllById(compra.getItemIds());
+        List<Item> itens = itemRepository.findByNomeIn(compra.getItemNomes());
+
 
         compr.setFornecedor(fornecedor);
         compr.setItem(itens);
