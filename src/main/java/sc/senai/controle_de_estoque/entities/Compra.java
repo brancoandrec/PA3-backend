@@ -16,7 +16,7 @@ public class Compra {
     private Fornecedor fornecedor;
     @ManyToOne
     private Projeto projeto;
-    private Long preco;
+    private Float preco;
     private Date dataCompra;
     private Date dataRecebimento;
     private Date dataInvoice;
@@ -54,11 +54,11 @@ public class Compra {
         this.projeto = projeto;
     }
 
-    public Long getPreco() {
+    public Float getPreco() {
         return preco;
     }
 
-    public void setPreco(Long preco) {
+    public void setPreco(Float preco) {
         this.preco = preco;
     }
 

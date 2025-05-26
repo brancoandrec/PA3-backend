@@ -7,7 +7,7 @@ public class CriarCompraDTO {
         private List<String> itemNomes;
         private String fornecedorNome;
         private String projetoNome;
-        private Long preco;
+        private Float preco;
         private Date dataCompra;
         private Date dataRecebimento;
         private Date dataInvoice;
@@ -37,11 +37,11 @@ public class CriarCompraDTO {
         this.fornecedorNome = fornecedorNome;
     }
 
-    public Long getPreco() {
+    public Float getPreco() {
         return preco;
     }
 
-    public void setPreco(Long preco) {
+    public void setPreco(Float preco) {
         this.preco = preco;
     }
 
